@@ -21,6 +21,44 @@ import MovieFilterScreen from "./screens/MovieFilterScreen/MovieFilterScreen.mai
   Read the example carefully to set up this app's screen heirarchy in a similar manner.
 
   https://reactnavigation.org/docs/modal */
-export default function App() {
-  return <NavigationContainer>{}</NavigationContainer>;
+  /*
+  function MoviesListScreen({ navigation }) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 30 }}>This is the home screen!</Text>
+        <Button
+          onPress={() => navigation.navigate('MovieFilterScreen')}
+          title="Filter"
+        />
+      </View>
+    );
+  }
+
+  function MovieFilterScreen({ navigation }) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+        <Button onPress={() => navigation.goBack()} title="Dismiss" />
+      </View>
+    );
+  }
+  */
+
+  const Stack = createStackNavigator();
+
+  export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Group>
+          <Stack.Screen name="MovieListScreen" component={MovieListScreen}/>
+          <Stack.Screen name="MovieDetailScreen" component={MovieDetailScreen}/>
+        </Stack.Group>
+        <Stack.Group screenOptions={{ presentation: 'modal '}}>
+          <Stack.Screen name="MovieFilterScreen" component={MovieFilterScreen}/>
+        </Stack.Group>
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  );
 }
