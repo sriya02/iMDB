@@ -8,12 +8,15 @@ export const MovieCell = ({ movieItem }) => {
   // demo in the spec, to figure out what this should look like.
   return (
     <View style={styles.movieCell}>
-      <Text>style={styles.movieCellTitle}
-      {movieItem.title}
+      <View style={styles.movieCellRight}/>
+      <View style={styles.movieCellLeft}/>
+      <Text style={styles.movieCellTitle}>
+        {movieItem.title}
       </Text>
-      <Image
-        style={styles.image}
-        source={posterurl}
+      <Text style={styles.movieCellSubtitle}>
+        {movieItem.actors}
+      </Text>
+      <Image style={styles.movieCellImage}
       />
     </View>
   );

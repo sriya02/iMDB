@@ -73,9 +73,11 @@ export default function MovieListScreen({ navigation, route }) {
 
     if (meetsSearchCriteria && meetsActorsCriteria) {
       // TODO: Return a MovieCell, wrapped by a TouchableOpacity so we can handle taps.
+      return(
       <TouchableOpacity>
-        
+        <MovieCell movieItem={item}/>
       </TouchableOpacity>
+      )
     } else {
       // If the item doesn't meet search/filter criteria, then we can
       // simply return null and it won't be rendered in the list!
@@ -87,15 +89,18 @@ export default function MovieListScreen({ navigation, route }) {
   // a SafeAreaView to support iOS.
   return (
     <SafeAreaView style={styles.container}>
-      {/* TODO: Add a SearchBar: https://reactnativeelements.com/docs/searchbar/.
-                The third-party package should already be installed for you. */}
-      {/* TODO: Add a FlatList: https://reactnative.dev/docs/flatlist */}
-      
+      <SearchBar
+        round
+        placeholder="Search"
+        lightTheme="true"
+      />
+    {
       <FlatList
         data = {TABLE_DATA}
         renderItem = {renderItem}
-        keyExtractor = {movie => movie.id}
+        keyExtractor = {(movieItem) => movieItem.id}
     />
+    }
     </SafeAreaView>
   );
 }
